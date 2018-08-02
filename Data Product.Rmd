@@ -1,0 +1,42 @@
+---
+title: "Data product Week-2 Assignment"
+output: html_document
+---
+#August 02, 2018
+
+
+
+
+
+
+Instructions:
+
+1-Create a web page using R Markdown that features a map created with Leaflet.
+  I intend to show you the three Buildings which you can find me in campus 
+
+2- I could use piping operator to facilitate the coding but
+   I prefered to use the usual commands for more clarification .
+   
+3- Each marker involves the name of the corresponding place which by clicking on the name 
+   the web address of the place would be appeared .
+   
+   
+   
+# The Map: (Check out the Campus!)   
+
+```{r ,warning=FALSE}
+library(leaflet)
+
+UICsites<-c(
+    
+    "<a href='https://library.uic.edu/libraries/daley'>UIC Library-Richard J.Daley Library</a>",
+    "<a href='http://studentcenters.uic.edu/'>student center East (SCE)</a>",
+    "<a href='https://www.uic.edu/'>Engineering Research Facility (ERF)</a>"
+)
+
+df <- data.frame(lat = c(41.872063,41.871796,41.869626),lng = c(-87.650046,-87.647119,-87.648903))
+my_map <-leaflet(df) 
+my_map<-addTiles(my_map)
+my_map<-addMarkers(my_map, popup=UICsites)
+my_map
+```
